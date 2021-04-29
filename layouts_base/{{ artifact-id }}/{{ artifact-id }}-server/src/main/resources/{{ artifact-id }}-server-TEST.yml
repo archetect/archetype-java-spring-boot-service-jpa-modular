@@ -1,0 +1,11 @@
+# This configuration is used when running under a TEST RuntimeEnvironment. It is additive to the baseline configuration
+# file, and provides overrides necessary for running unit/integration tests.
+#
+# Typically, the TEST RuntimeEnvironment is determined automatically by the presence of common testing annotations being
+# present on the classpath. A TEST RuntimeEnvironment can also be set explicitly by specifying ENV=test as a
+#  System Property (-DENV=test).
+
+server:
+  port: 0
+
+db: h2

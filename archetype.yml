@@ -1,0 +1,95 @@
+---
+desciption: "Spring Boot Namespaced Modular Microservice"
+authors: ["Jimmie Fulton <jimmie.fulton@gmail.com"]
+languages: ["Java"]
+frameworks: ["Spring", "Spring Boot", "JPA"]
+tags: ["Modular", "Microservice"]
+
+script:
+  - rules:
+      - source:
+          Junk Files:
+            patterns:
+              - glob: "*.DS_Store"
+            action: SKIP
+
+  - set:
+      ###############################
+      # Prompted Variables
+      ###############################
+      project:
+        prompt: "Project Name:"
+
+      suffix:
+        prompt: "Project Type:"
+        default: "Service"
+
+      group-prefix:
+        prompt: "GroupId Prefix:"
+        default: "com.example"
+
+      author:
+        prompt: "Author Name:"
+
+      service-port:
+        prompt: "Service Port:"
+        default: 8080
+        type: int
+
+      management-port:
+        prompt: "Management Port:"
+        default: "{{ service-port + 1 }}"
+        type: int
+
+      ###############################
+      # Derived/Implicit Variables
+      ###############################
+
+      ProjectTitle:
+        value: "{{ project | title_case }} {{ suffix | title_case }}"
+
+      # Prefix Variants
+      ProjectPrefix:
+        value: "{{ project | pascal_case }}"
+
+      projectPrefix:
+        value: "{{ project | camel_case }}"
+
+      project_prefix:
+        value: "{{ project | snake_case }}"
+
+      project-prefix:
+        value: "{{ project | train_case }}"
+
+      # Suffix Variants
+      ProjectSuffix:
+        value: "{{ suffix | pascal_case }}"
+
+      project_suffix:
+        value: "{{ suffix | snake_case }}"
+
+      project-suffix:
+        value: "{{ suffix | train_case }}"
+
+      # Project Structure and Build Variables
+      root_package:
+        value: "{{ group-prefix }}.{{ project | package_case }}.{{ suffix | package_case }}"
+
+      root_directory:
+        value: "{{ root_package | package_to_directory }}"
+
+      artifact_id:
+        value: "{{ project_prefix }}_{{ project_suffix }}"
+
+      artifact-id:
+        value: "{{ project-prefix }}-{{ project-suffix }}"
+
+      group-id:
+        value: "{{ group-prefix }}.{{ artifact-id }}"
+
+      property-prefix:
+        value: "{{ artifact-id }}"
+
+  - render:
+      directory:
+        source: layouts_base

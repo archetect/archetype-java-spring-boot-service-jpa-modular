@@ -1,0 +1,8 @@
+# This configuration is used when running under a LOCAL RuntimeEnvironment. It is additive to the baseline configuration
+# file, and provides overrides necessary for running on a local developer machine.
+#
+# Typically, the LOCAL RuntimeEnvironment is determined automatically anEnvironment Spec has not been found in
+# (ENV|ENVIRONMENT) System Properties or Environment Variables. A LOCAL RuntimeEnvironment can also be set explicitly
+# by specifying a ENV=local as a System Property (-DENV=test), or in an Environment Variable (export ENV=local).
+
+db: mysql
