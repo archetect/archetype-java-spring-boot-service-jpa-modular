@@ -37,7 +37,7 @@ public class {{ ProjectPrefix }}{{ ProjectSuffix }}PersistenceH2Config {
     @Bean
     public HibernateJpaVendorAdapter {{ projectPrefix }}VA() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setDatabase(Database.POSTGRESQL);
+        vendorAdapter.setDatabase(Database.H2);
 //         vendorAdapter.setShowSql(Switches.showSql.isEnabled());
         return vendorAdapter;
     }

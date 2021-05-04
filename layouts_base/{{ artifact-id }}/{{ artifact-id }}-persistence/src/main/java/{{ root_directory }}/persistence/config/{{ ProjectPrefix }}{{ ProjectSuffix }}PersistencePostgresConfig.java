@@ -31,18 +31,6 @@ public class {{ProjectPrefix}}{{ ProjectSuffix }}PersistencePostgresConfig {
 
     @Bean
     public DataSource {{projectPrefix}}DS() {
-//         DatabaseInitializer.initialize(
-//             new PostgresDatabaseInitializer(
-//                 "localhost",
-//                 env.getRequiredProperty("{{ property-prefix }}.db.postgres.database"),
-//                 env.getRequiredProperty("{{ property-prefix }}.db.postgres.user"),
-//                 env.getRequiredProperty("{{ property-prefix }}.db.postgres.password"),
-//                 "postgres",
-//                 "postgres",
-//                 ""
-//             )
-//         );
-
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setPoolName("{{projectPrefix}}");
         logger.info("Configuring {{ ProjectPrefix }} Persistence with a PostgreSQL database");

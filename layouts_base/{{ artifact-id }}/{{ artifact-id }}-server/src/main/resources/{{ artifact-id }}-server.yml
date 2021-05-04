@@ -1,12 +1,5 @@
 server:
   port: {{ service-port }}
-  ssl:
-    key-store-type: PKCS12
-    key-store: classpath:playstation.p12
-    key-alias: ks-localhost
-    enabled: true
-    protocol: TLS
-    key-store-password: 123456
 
 logging:
   file: logs/{{ artifact-id }}-server.log
@@ -26,18 +19,15 @@ management:
       exposure:
         include: "*"
 
-# Choose which database are you going to use and updated configuration based on your requirements.
-  {{ artifact-id }}:
-db:
-  postgres:
-    url: jdbc:postgresql://localhost:5432/{{projectPrefix}}
-    user: root
-    password: password
-  mysql:
-    url: jdbc:mysql://localhost:3306/{{projectPrefix}}?serverTimezone=UTC
-    user: root
-    password: password
-  liquibase:
-    enabled: true
-    drop-first: true
+db: h2
 
+# Choose which database are you going to use and updated configuration based on your requirements.
+{{ artifact-id }}:
+  db:
+    postgres:
+      url: jdbc:postgresql://localhost:5432/{{projectPrefix}}
+      user: postgres
+      password: password
+    liquibase:
+      enabled: true
+      drop-first: true
