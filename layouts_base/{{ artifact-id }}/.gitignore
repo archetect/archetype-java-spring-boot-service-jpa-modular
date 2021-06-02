@@ -22,3 +22,7 @@ target/
 # Gradle
 .gradle/
 .resourceCache
+
+#Misc
+*.log
+*.gz

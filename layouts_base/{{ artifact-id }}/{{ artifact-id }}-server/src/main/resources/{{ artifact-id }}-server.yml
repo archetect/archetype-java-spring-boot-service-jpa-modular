@@ -2,7 +2,8 @@ server:
   port: {{ service-port }}
 
 logging:
-  file: logs/{{ artifact-id }}-server.log
+  file:
+    name: logs/{{ artifact-id }}-server.log
 
 management:
   endpoint:
